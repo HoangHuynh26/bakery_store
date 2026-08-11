@@ -1,0 +1,43 @@
+.centered-heading {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.reviews-grid {
+  margin-top: 34px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.review-card {
+  padding: 34px;
+  border-radius: 24px;
+  background: var(--cream);
+  border: 1px solid var(--line);
+}
+
+.stars {
+  color: var(--clay);
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+}
+
+.review-quote {
+  margin: 18px 0 16px;
+  color: var(--text-soft);
+  font-size: 1.05rem;
+  line-height: 1.84;
+}
+
+.review-author {
+  display: inline-block;
+  color: var(--clay);
+  font-weight: 900;
+}
+
+@media (max-width: 760px) {
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+}

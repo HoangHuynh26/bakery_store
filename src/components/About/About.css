@@ -1,0 +1,91 @@
+.section-shell {
+  width: min(100%, 1180px);
+  margin: 0 auto;
+  padding: clamp(54px, 5vw, 100px) 24px;
+}
+
+.section-heading {
+  max-width: 720px;
+}
+
+.section-kicker {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: var(--clay);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.section-heading h2 {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+.about-grid {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: minmax(420px, 1fr) minmax(300px, 420px);
+  gap: 40px;
+  align-items: center;
+}
+
+.about-copy p {
+  color: var(--muted);
+  font-size: 1.04rem;
+  line-height: 1.88;
+}
+
+.about-copy p:first-child {
+  margin-top: 0;
+}
+
+.about-copy p:last-child {
+  margin-bottom: 0;
+}
+
+.about-card {
+  padding: 30px;
+  border-radius: 28px;
+  background: var(--sage-soft);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.about-card h3 {
+  margin: 0 0 8px;
+  color: var(--ink);
+}
+
+.about-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.about-card-icon {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--clay);
+  color: var(--cream);
+  font-size: 1.45rem;
+}
+
+@media (max-width: 760px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-copy p {
+    font-size: 1rem;
+  }
+}

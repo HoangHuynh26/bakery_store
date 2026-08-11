@@ -1,0 +1,10 @@
+.about-me-copy {
+  max-width: 780px;
+  margin-top: 24px;
+}
+
+.about-me-copy p {
+  margin: 0 0 16px;
+  color: var(--muted);
+  line-height: 1.88;
+}

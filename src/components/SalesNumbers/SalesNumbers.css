@@ -1,0 +1,37 @@
+.sales-grid {
+  margin-top: 34px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 22px;
+}
+
+.sales-item {
+  padding: 36px 24px;
+  border-radius: 24px;
+  background: var(--sage-soft);
+  border: 1px solid var(--line);
+  text-align: center;
+}
+
+.sales-number {
+  display: block;
+  color: var(--clay);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  line-height: 1;
+}
+
+.sales-label {
+  display: block;
+  margin-top: 12px;
+  color: var(--muted);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 760px) {
+  .sales-grid {
+    grid-template-columns: 1fr;
+  }
+}

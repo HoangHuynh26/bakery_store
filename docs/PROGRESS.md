@@ -47,11 +47,11 @@
 - [x] **Feature 6.4**: Ingredient Inventory Tracking & Low Stock Alerts (Flyway V4, Stock movements, Inbound, Deduction, Spoilage)
 
 ### Phase 7 — Customer Retention
-- [ ] **Feature 7.1**: Product Reviews & Ratings with Verified Purchase Badges
-- [ ] **Feature 7.2**: Promotion Engine & Coupon Codes (Fixed, percentage, min spend, per-user limits)
-- [ ] **Feature 7.3**: Loyalty Rewards & Membership Tiers
-- [ ] **Feature 7.4**: Customer Support Inquiries & Interactive Rule-Based FAQ Chatbot
-- [ ] **Feature 7.5**: Operational Notification Center & Transactional Email Notifications
+- [x] **Feature 7.1**: Product Reviews & Ratings with Verified Purchase Badges (Rating summaries, star breakdown, authentic reviews list & authenticated submission)
+- [x] **Feature 7.2**: Promotion Engine & Coupon Codes (Fixed, percentage, min spend, per-user limits, validated server-side)
+- [x] **Feature 7.3**: Loyalty Rewards & Membership Tiers (Maison Douce VIP Privilege Club card, Points balance, Bronze/Silver/Gold/Platinum tiers, Transaction history ledger)
+- [x] **Feature 7.4**: Customer Support Inquiries & Interactive Rule-Based FAQ Chatbot (Floating concierge widget, instant delivery/storage/allergy advice, live order tracking lookup)
+- [x] **Feature 7.5**: Operational Notification Center & Transactional Email Notifications
 
 ### Phase 8 — Reporting & Production Readiness
 - [ ] **Feature 8.1**: Business Analytics & Financial CSV Export

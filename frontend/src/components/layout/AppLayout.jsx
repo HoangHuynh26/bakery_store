@@ -4,6 +4,7 @@ import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 import { CartDrawer } from '../cart/CartDrawer';
 import { ToastContainer } from '../common/Toast';
+import { FaqChatbotModal } from '../common/FaqChatbotModal';
 
 export const AppLayout = () => {
   return (
@@ -15,6 +16,7 @@ export const AppLayout = () => {
       <Footer />
       <CartDrawer />
       <ToastContainer />
+      <FaqChatbotModal />
     </div>
   );
 };

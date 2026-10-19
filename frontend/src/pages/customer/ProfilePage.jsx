@@ -3,9 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../store/useAuthStore';
 import { useToastStore } from '../../store/useToastStore';
 import { authService } from '../../services/authService';
+import { retentionService } from '../../services/retentionService';
 import { 
   User, MapPin, Shield, ShoppingBag, Plus, Trash2, Edit3, 
-  Check, AlertCircle, LogOut, Sparkles, Building, Phone, Mail 
+  Check, AlertCircle, LogOut, Sparkles, Building, Phone, Mail,
+  Crown, Award, Gift, ArrowRight
 } from 'lucide-react';
 import './ProfilePage.css';
 
@@ -50,7 +52,23 @@ export const ProfilePage = () => {
       return;
     }
     loadAddresses();
+    loadLoyalty();
   }, [isAuthenticated]);
+
+  const [loyaltyAccount, setLoyaltyAccount] = useState(null);
+  const [isLoadingLoyalty, setIsLoadingLoyalty] = useState(false);
+
+  const loadLoyalty = async () => {
+    setIsLoadingLoyalty(true);
+    try {
+      const data = await retentionService.getMyLoyaltyAccount();
+      setLoyaltyAccount(data);
+    } catch (err) {
+      // Quiet fail if not loaded
+    } finally {
+      setIsLoadingLoyalty(false);
+    }
+  };
 
   const loadAddresses = async () => {
     setIsLoadingAddresses(true);
@@ -216,6 +234,21 @@ export const ProfilePage = () => {
           </button>
 
           <button
+            onClick={() => setActiveTab('loyalty')}
+            className={`profile-nav-btn ${activeTab === 'loyalty' ? 'active' : ''}`}
+          >
+            <Crown className="w-4 h-4 text-amber-500" />
+            <span className="flex items-center justify-between w-full">
+              <span>Maison Douce Club</span>
+              {loyaltyAccount && (
+                <span className="text-[10px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.5 rounded-full">
+                  {loyaltyAccount.pointsBalance} đ
+                </span>
+              )}
+            </span>
+          </button>
+
+          <button
             onClick={() => setActiveTab('addresses')}
             className={`profile-nav-btn ${activeTab === 'addresses' ? 'active' : ''}`}
           >
@@ -298,6 +331,128 @@ export const ProfilePage = () => {
                   {isUpdatingProfile ? 'Đang lưu...' : 'Lưu Thay Đổi'}
                 </button>
               </form>
+            </div>
+          )}
+
+          {/* TAB: Maison Douce Club & Loyalty Rewards */}
+          {activeTab === 'loyalty' && (
+            <div className="space-y-6">
+              {/* VIP Membership Card */}
+              <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#2E1F1A] via-[#38261F] to-[#1E1410] p-7 md:p-9 text-white shadow-xl border border-amber-500/30">
+                <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+                <div className="relative z-10 flex flex-col justify-between h-52">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="text-[10px] tracking-widest uppercase font-semibold text-amber-300">
+                        Maison Douce Patisserie
+                      </span>
+                      <h3 className="font-serif text-2xl font-bold tracking-wide mt-0.5 text-stone-100">
+                        VIP PRIVILEGE CLUB
+                      </h3>
+                    </div>
+                    <div className="px-3.5 py-1.5 rounded-full bg-amber-400/20 border border-amber-400/40 text-amber-300 text-xs font-bold tracking-wider uppercase flex items-center gap-1.5 backdrop-blur-sm">
+                      <Crown className="w-3.5 h-3.5 text-amber-300" />
+                      <span>{loyaltyAccount?.currentTier?.name || 'Bronze Member'}</span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-end justify-between pt-6 border-t border-stone-700/60">
+                    <div>
+                      <span className="text-xs text-stone-400 block mb-1">Chủ Thẻ Thành Viên</span>
+                      <span className="font-medium text-base tracking-wide text-stone-200">
+                        {user?.fullName || 'Khách Hàng Quý Mến'}
+                      </span>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-xs text-stone-400 block mb-1">Điểm Thưởng Khả Dụng</span>
+                      <span className="font-serif text-3xl font-bold text-amber-400">
+                        {loyaltyAccount?.pointsBalance?.toLocaleString('vi-VN') || 0}
+                        <span className="text-sm font-sans font-normal text-amber-200 ml-1">điểm</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Tier Progress & Benefits */}
+              <div className="profile-card p-6 md:p-8 space-y-6">
+                <div>
+                  <h3 className="font-serif text-lg font-bold text-bakery-espresso mb-1">
+                    Đặc Quyền Hạng {loyaltyAccount?.currentTier?.name || 'Bronze Member'}
+                  </h3>
+                  <p className="text-xs text-stone-600 leading-relaxed">
+                    {loyaltyAccount?.currentTier?.benefitsDescription ||
+                      'Tích luỹ 1% điểm thưởng trên mọi đơn hàng và nhận ưu đãi riêng vào tháng sinh nhật.'}
+                  </p>
+                </div>
+
+                {loyaltyAccount?.nextTier && (
+                  <div className="p-4 bg-stone-50 rounded-2xl border border-stone-200 space-y-2">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="font-semibold text-bakery-espresso">
+                        Tiến độ lên hạng {loyaltyAccount.nextTier.name}
+                      </span>
+                      <span className="text-amber-700 font-bold">
+                        Còn {loyaltyAccount.pointsToNextTier} điểm
+                      </span>
+                    </div>
+                    <div className="w-full h-2 bg-stone-200 rounded-full overflow-hidden">
+                      <div
+                        className="h-full bg-gradient-to-r from-amber-500 to-amber-600 rounded-full transition-all duration-500"
+                        style={{
+                          width: `${Math.min(
+                            100,
+                            Math.max(
+                              15,
+                              ((loyaltyAccount.lifetimePoints || 100) /
+                                ((loyaltyAccount.lifetimePoints || 100) +
+                                  (loyaltyAccount.pointsToNextTier || 1))) *
+                                100
+                            )
+                          )}%`,
+                        }}
+                      />
+                    </div>
+                    <span className="text-[11px] text-stone-500 block">
+                      Đặc quyền tiếp theo: {loyaltyAccount.nextTier.benefitsDescription}
+                    </span>
+                  </div>
+                )}
+
+                {/* Points Transactions Ledger */}
+                <div className="space-y-3 pt-2">
+                  <h4 className="font-serif font-bold text-sm text-bakery-espresso flex items-center gap-2">
+                    <Award className="w-4 h-4 text-bakery-caramel" />
+                    <span>Lịch Sử Giao Dịch Điểm</span>
+                  </h4>
+
+                  {loyaltyAccount?.recentTransactions && loyaltyAccount.recentTransactions.length > 0 ? (
+                    <div className="divide-y divide-stone-100">
+                      {loyaltyAccount.recentTransactions.map((tx) => (
+                        <div key={tx.id} className="py-3 flex items-center justify-between text-xs">
+                          <div>
+                            <span className="font-semibold text-stone-800 block">{tx.description}</span>
+                            <span className="text-[11px] text-stone-400">
+                              {tx.createdAt ? new Date(tx.createdAt).toLocaleDateString('vi-VN') : ''}
+                            </span>
+                          </div>
+                          <span
+                            className={`font-bold font-serif text-sm ${
+                              tx.pointsChange >= 0 ? 'text-emerald-600' : 'text-rose-600'
+                            }`}
+                          >
+                            {tx.pointsChange >= 0 ? `+${tx.pointsChange}` : tx.pointsChange} đ
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="text-xs text-stone-400 italic py-2">
+                      Chưa có giao dịch tích điểm nào.
+                    </p>
+                  )}
+                </div>
+              </div>
             </div>
           )}
 

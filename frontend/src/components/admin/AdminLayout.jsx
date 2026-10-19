@@ -10,7 +10,9 @@ import {
   LogOut, 
   Menu, 
   X,
-  ShieldAlert
+  ShieldAlert,
+  Sparkles,
+  Boxes
 } from 'lucide-react';
 import { useAuthStore } from '../../store/useAuthStore';
 import './AdminLayout.css';
@@ -52,6 +54,8 @@ export const AdminLayout = () => {
     { to: '/admin/dashboard', icon: LayoutDashboard, label: 'Tổng quan (Dashboard)' },
     { to: '/admin/orders', icon: ShoppingBag, label: 'Đơn hàng (Orders)' },
     { to: '/admin/kitchen', icon: ChefHat, label: 'Bếp bánh (Kitchen Queue)' },
+    { to: '/admin/custom-cakes', icon: Sparkles, label: 'Bánh Thiết Kế (Bespoke)' },
+    { to: '/admin/inventory', icon: Boxes, label: 'Kho Nguyên Liệu (Inventory)' },
     { to: '/admin/products', icon: Cake, label: 'Sản phẩm (Products)' },
     { to: '/admin/customers', icon: Users, label: 'Khách hàng (Customers)' },
   ];

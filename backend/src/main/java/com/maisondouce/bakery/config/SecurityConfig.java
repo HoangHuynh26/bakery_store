@@ -64,6 +64,7 @@ public class SecurityConfig {
                                 "/api/v1/delivery/**",
                                 "/api/v1/carts/**",
                                 "/api/v1/checkout/**",
+                                "/api/v1/custom-cakes/**",
                                 "/api/v1/settings/**",
                                 "/actuator/health/**",
                                 "/actuator/info",

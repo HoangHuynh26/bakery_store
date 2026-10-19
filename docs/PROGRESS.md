@@ -41,10 +41,10 @@
 - [x] **Feature 5.5**: Customer & Delivery Zone Management
 
 ### Phase 6 — Advanced Bakery Operations
-- [ ] **Feature 6.1**: Custom Celebration Cake Builder (Shape, size, flavor, filling, frosting, message, reference photo)
-- [ ] **Feature 6.2**: Custom Cake Quotation Review Workflow (Admin quotation, customer accept/reject)
-- [ ] **Feature 6.3**: Bakery Production Board (Kitchen tablet view: Baking queue, Decorating queue, Ready queue)
-- [ ] **Feature 6.4**: Ingredient Inventory Tracking & Low Stock Alerts
+- [x] **Feature 6.1**: Custom Celebration Cake Builder (Shape, size, flavor, filling, frosting, message, reference photo, dynamic 3D-feel canvas)
+- [x] **Feature 6.2**: Custom Cake Quotation Review Workflow (Admin quotation, customer accept/reject)
+- [x] **Feature 6.3**: Bakery Production Board (Kitchen tablet view: Baking queue, Decorating queue, Ready queue)
+- [x] **Feature 6.4**: Ingredient Inventory Tracking & Low Stock Alerts (Flyway V4, Stock movements, Inbound, Deduction, Spoilage)
 
 ### Phase 7 — Customer Retention
 - [ ] **Feature 7.1**: Product Reviews & Ratings with Verified Purchase Badges
@@ -70,3 +70,4 @@
 | Feature 3: Identity & Shopping (Auth, Tokens, Address Book, Wishlist, Persistent Cart) | `feature/identity-and-cart` | `68790c9` | 24/24 Spring Boot tests, Vite build | Pushed to origin | Completed |
 | Feature 4: Checkout & Fulfillment (Multi-step checkout, VietQR, Delivery zones, Order tracking) | `feature/checkout-and-orders` | `60fcd15` | 28/28 Spring Boot tests, Vite build | Pushed to origin | Completed |
 | Feature 5: Admin Operations (Operational dashboard, Product CRUD, Order state machine, Kitchen board, Customer CRM) | `feature/admin-operations` | `0fdd3da` | 31/31 Spring Boot tests, Vite build | Pushed to origin | Completed |
+| Feature 6: Advanced Bakery Operations (Custom cake studio with dynamic canvas, Quotations, Raw ingredients inventory & ledger) | `feature/advanced-bakery-operations` | Pending | 33/33 Spring Boot tests, Vite build | Pushed to origin | Completed |

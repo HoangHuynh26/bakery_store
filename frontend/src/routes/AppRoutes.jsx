@@ -20,6 +20,9 @@ import AdminProductsPage from '../pages/admin/AdminProductsPage';
 import AdminOrdersPage from '../pages/admin/AdminOrdersPage';
 import KitchenBoardPage from '../pages/admin/KitchenBoardPage';
 import AdminCustomersPage from '../pages/admin/AdminCustomersPage';
+import CustomCakeBuilderPage from '../pages/public/CustomCakeBuilderPage';
+import AdminCustomCakesPage from '../pages/admin/AdminCustomCakesPage';
+import AdminInventoryPage from '../pages/admin/AdminInventoryPage';
 
 export const AppRoutes = () => {
   return (
@@ -47,9 +50,9 @@ export const AppRoutes = () => {
         <Route path="/account/wishlist" element={<WishlistPage />} />
         <Route path="/wishlist" element={<WishlistPage />} />
 
-        {/* Informational pages */}
+        {/* Bespoke Cake Builder & Informational */}
+        <Route path="/custom-cake-builder" element={<CustomCakeBuilderPage />} />
         <Route path="/seasonal" element={<CatalogPage />} />
-        <Route path="/custom-cake-builder" element={<CatalogPage />} />
         <Route path="/about" element={<HomePage />} />
         <Route path="/contact" element={<HomePage />} />
       </Route>
@@ -61,6 +64,8 @@ export const AppRoutes = () => {
         <Route path="products" element={<AdminProductsPage />} />
         <Route path="orders" element={<AdminOrdersPage />} />
         <Route path="kitchen" element={<KitchenBoardPage />} />
+        <Route path="custom-cakes" element={<AdminCustomCakesPage />} />
+        <Route path="inventory" element={<AdminInventoryPage />} />
         <Route path="customers" element={<AdminCustomersPage />} />
       </Route>
 

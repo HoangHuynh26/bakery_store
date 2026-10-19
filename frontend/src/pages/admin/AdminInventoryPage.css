@@ -1,0 +1,29 @@
+/* Maison Douce - Admin Inventory CSS */
+
+.inventory-page-root {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.ingredient-stock-bar {
+  height: 6px;
+  border-radius: 3px;
+  background-color: #e2e8f0;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.ingredient-stock-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.stock-good {
+  background-color: #10b981;
+}
+
+.stock-low {
+  background-color: #ef4444;
+}

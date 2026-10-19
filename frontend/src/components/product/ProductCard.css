@@ -1,0 +1,65 @@
+.product-card-container {
+  background: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid rgba(56, 38, 31, 0.07);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px -4px rgba(56, 38, 31, 0.12);
+  border-color: rgba(200, 153, 99, 0.4);
+}
+
+.product-image-wrap {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background-color: #F7EBDD;
+}
+
+.product-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-card-container:hover .product-image-wrap img {
+  transform: scale(1.06);
+}
+
+.tag-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(255, 249, 242, 0.95);
+  backdrop-filter: blur(4px);
+  color: #38261F;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.quick-add-btn {
+  background-color: #F7EBDD;
+  color: #38261F;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.quick-add-btn:hover {
+  background-color: #C89963;
+  color: #FFFFFF;
+  transform: scale(1.08);
+}

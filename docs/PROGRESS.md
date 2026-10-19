@@ -15,11 +15,11 @@
 - [x] **Feature 1.3**: React Frontend Foundation (Design tokens, Tailwind, React Router, Query Provider, Zustand, Layout Shell)
 
 ### Phase 2 — Storefront & Catalog
-- [ ] **Feature 2.1**: Editorial Homepage with 15 Brand & Merchandising Sections
-- [ ] **Feature 2.2**: Category & Product Catalog Browsing with Vietnamese/English names
-- [ ] **Feature 2.3**: Product Detail Page (Variants, Flavors, Sizes, Allergens, Ingredients, Lead Times)
-- [ ] **Feature 2.4**: Live Search with Debounce, Instant Suggestions & Dedicated Search Results Page
-- [ ] **Feature 2.5**: Catalog Filters (Price range, Diet, Flavor, Availability) & Sorting
+- [x] **Feature 2.1**: Editorial Homepage with 15 Brand & Merchandising Sections
+- [x] **Feature 2.2**: Category & Product Catalog Browsing with Vietnamese/English names
+- [x] **Feature 2.3**: Product Detail Page (Variants, Flavors, Sizes, Allergens, Ingredients, Lead Times)
+- [x] **Feature 2.4**: Live Search with Debounce, Instant Suggestions & Dedicated Search Results Page
+- [x] **Feature 2.5**: Catalog Filters (Price range, Diet, Flavor, Availability) & Sorting
 
 ### Phase 3 — Identity & Shopping
 - [ ] **Feature 3.1**: Customer Registration, Login, JWT Access & Rotating Refresh Tokens
@@ -65,4 +65,5 @@
 
 | Feature | Branch | Commit Hash | Automated Tests | Push Result | Status |
 |---------|--------|-------------|-----------------|-------------|--------|
-| Feature 1.1: Project Foundation & Architecture Setup | `feature/project-foundation` | Pending | CI check | Pending | In Progress |
+| Feature 1: Project Foundation & Architecture Setup | `feature/project-foundation` | `8ab61d0` | 4/4 Spring Boot tests, Vite build | Pushed to origin | Completed |
+| Feature 2: Storefront & Product Catalog (Browsing, Search, Filters, Detail) | `feature/catalog-storefront` | Pending | 11/11 Spring Boot tests, Vite build | Pending push | Completed |

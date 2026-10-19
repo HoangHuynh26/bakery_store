@@ -8,4 +8,6 @@ import java.util.List;
 public interface AdminDashboardService {
     AdminDashboardSummaryDTO getDashboardSummary();
     List<LowStockProductDTO> getLowStockAlerts(int threshold);
+    byte[] exportOrdersCsv();
+    byte[] exportInventoryCsv();
 }

@@ -28,7 +28,11 @@ public class CheckoutController {
     @Operation(summary = "Submit checkout to create order and reserve stock")
     public ResponseEntity<ApiResponse<OrderResponseDTO>> checkout(
             @AuthenticationPrincipal UserPrincipal principal,
+            @RequestHeader(value = "X-Session-Token", required = false) String sessionToken,
             @Valid @RequestBody CheckoutRequest request) {
+        if ((request.getGuestSessionToken() == null || request.getGuestSessionToken().isBlank()) && sessionToken != null) {
+            request.setGuestSessionToken(sessionToken);
+        }
         OrderResponseDTO order = orderService.checkout(principal, request);
         return new ResponseEntity<>(
                 ApiResponse.success("Đơn hàng của bạn đã được tiếp nhận thành công!", order),

@@ -18,11 +18,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/admin/dashboard")
-@RequiredArgsConstructor
 @Tag(name = "Admin Analytics", description = "Operational metrics, revenue, and inventory warnings for bakery management")
 public class AdminDashboardController {
 
     private final AdminDashboardService dashboardService;
+
+    public AdminDashboardController(AdminDashboardService dashboardService) {
+        this.dashboardService = dashboardService;
+    }
 
     @GetMapping("/summary")
     @PreAuthorize("hasAnyRole('SUPER_ADMIN', 'ADMIN', 'STAFF')")
@@ -39,5 +42,27 @@ public class AdminDashboardController {
             @RequestParam(defaultValue = "10") int threshold) {
         List<LowStockProductDTO> alerts = dashboardService.getLowStockAlerts(threshold);
         return ResponseEntity.ok(ApiResponse.success("Tải danh sách cảnh báo tồn kho thành công.", alerts));
+    }
+
+    @GetMapping("/export/orders.csv")
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN', 'ADMIN')")
+    @Operation(summary = "Export all orders as UTF-8 CSV")
+    public ResponseEntity<byte[]> exportOrdersCsv() {
+        byte[] csvData = dashboardService.exportOrdersCsv();
+        return ResponseEntity.ok()
+                .header(org.springframework.http.HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"maison_douce_orders.csv\"")
+                .header(org.springframework.http.HttpHeaders.CONTENT_TYPE, "text/csv; charset=UTF-8")
+                .body(csvData);
+    }
+
+    @GetMapping("/export/inventory.csv")
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN', 'ADMIN')")
+    @Operation(summary = "Export bakery product inventory as UTF-8 CSV")
+    public ResponseEntity<byte[]> exportInventoryCsv() {
+        byte[] csvData = dashboardService.exportInventoryCsv();
+        return ResponseEntity.ok()
+                .header(org.springframework.http.HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"maison_douce_inventory.csv\"")
+                .header(org.springframework.http.HttpHeaders.CONTENT_TYPE, "text/csv; charset=UTF-8")
+                .body(csvData);
     }
 }

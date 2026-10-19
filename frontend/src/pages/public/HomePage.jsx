@@ -16,6 +16,7 @@ import {
   CheckCircle2,
   ChevronDown
 } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 import './HomePage.css';
 
 // Featured categories for initial view
@@ -149,6 +150,44 @@ export const HomePage = () => {
 
   return (
     <div className="space-y-20 pb-20">
+      <Helmet>
+        <title>Maison Douce Bakery — Crafted with Love, Baked with Passion</title>
+        <meta
+          name="description"
+          content="Tiệm bánh thủ công phong cách Pháp tại Sài Gòn. Chuyên bánh kem sinh nhật thiết kế riêng, tiramisu, bánh su kem, croissant bơ Elle & Vire giao tận nơi."
+        />
+        <meta property="og:title" content="Maison Douce Bakery — Crafted with Love, Baked with Passion" />
+        <meta property="og:description" content="Nghệ thuật vị giác từ 100% bơ Pháp và dâu tây tươi mọng Đà Lạt." />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://maisondouce.vn/" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Bakery',
+            name: 'Maison Douce Bakery',
+            image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1200&q=80',
+            telephone: '+84-28-3822-5599',
+            priceRange: '₫₫',
+            address: {
+              '@type': 'PostalAddress',
+              streetAddress: '126 Lê Lợi, Phường Bến Thành',
+              addressLocality: 'Quận 1, TP. Hồ Chí Minh',
+              addressRegion: 'Thành phố Hồ Chí Minh',
+              addressCountry: 'VN',
+            },
+            openingHoursSpecification: [
+              {
+                '@type': 'OpeningHoursSpecification',
+                dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+                opens: '07:30',
+                closes: '21:30',
+              },
+            ],
+            servesCuisine: ['French Patisserie', 'Artisan Bakery', 'Desserts', 'Custom Cakes'],
+          })}
+        </script>
+      </Helmet>
+
       {/* 3. Hero Section */}
       <section className="hero-banner">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">

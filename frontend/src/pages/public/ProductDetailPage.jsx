@@ -26,6 +26,7 @@ import {
 } from 'lucide-react';
 import { useAuthStore } from '../../store/useAuthStore';
 import { retentionService } from '../../services/retentionService';
+import { Helmet } from 'react-helmet-async';
 import './ProductDetailPage.css';
 
 export const ProductDetailPage = () => {
@@ -157,6 +158,47 @@ export const ProductDetailPage = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
+      <Helmet>
+        <title>{product ? `${product.nameVi} | Maison Douce Bakery` : 'Maison Douce Bakery'}</title>
+        <meta
+          name="description"
+          content={product?.descriptionVi || 'Bánh thủ công Pháp cao cấp tại Maison Douce Bakery.'}
+        />
+        <meta property="og:title" content={`${product?.nameVi} — Maison Douce Bakery`} />
+        <meta property="og:description" content={product?.descriptionVi} />
+        <meta property="og:image" content={product?.mainImageUrl} />
+        <meta property="og:type" content="product" />
+        <link rel="canonical" href={`https://maisondouce.vn/product/${product?.slug}`} />
+        {product && (
+          <script type="application/ld+json">
+            {JSON.stringify({
+              '@context': 'https://schema.org/',
+              '@type': 'Product',
+              name: product.nameVi,
+              image: [product.mainImageUrl],
+              description: product.descriptionVi,
+              sku: product.sku,
+              brand: {
+                '@type': 'Brand',
+                name: 'Maison Douce Bakery',
+              },
+              offers: {
+                '@type': 'Offer',
+                priceCurrency: 'VND',
+                price: product.basePrice,
+                availability: product.stockQuantity > 0 ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+                url: `https://maisondouce.vn/product/${product.slug}`,
+              },
+              aggregateRating: reviewsData?.totalReviews > 0 ? {
+                '@type': 'AggregateRating',
+                ratingValue: reviewsData.averageRating,
+                reviewCount: reviewsData.totalReviews,
+              } : undefined,
+            })}
+          </script>
+        )}
+      </Helmet>
+
       {/* Breadcrumb Navigation */}
       <nav className="flex items-center gap-2 text-xs text-stone-500">
         <Link to="/" className="hover:text-bakery-caramel">Trang Chủ</Link>

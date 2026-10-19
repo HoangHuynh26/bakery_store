@@ -54,10 +54,10 @@
 - [x] **Feature 7.5**: Operational Notification Center & Transactional Email Notifications
 
 ### Phase 8 — Reporting & Production Readiness
-- [ ] **Feature 8.1**: Business Analytics & Financial CSV Export
-- [ ] **Feature 8.2**: SEO Structured Data (Schema.org Breadcrumb & Product), Sitemap & Open Graph
-- [ ] **Feature 8.3**: End-to-End User Journeys & Automated Verification
-- [ ] **Feature 8.4**: Production Deployment Guides & Release Tagging
+- [x] **Feature 8.1**: Business Analytics & Financial CSV Export (UTF-8 BOM Orders & Inventory CSV export)
+- [x] **Feature 8.2**: SEO Structured Data (Schema.org Breadcrumb & Product JSON-LD), Sitemap.xml, Robots.txt & Open Graph
+- [x] **Feature 8.3**: End-to-End User Journeys & Automated Verification (10-step full customer & admin journey test suite)
+- [x] **Feature 8.4**: Production Deployment Guides & Complete System Architecture Documentation
 
 ---
 
@@ -71,3 +71,5 @@
 | Feature 4: Checkout & Fulfillment (Multi-step checkout, VietQR, Delivery zones, Order tracking) | `feature/checkout-and-orders` | `60fcd15` | 28/28 Spring Boot tests, Vite build | Pushed to origin | Completed |
 | Feature 5: Admin Operations (Operational dashboard, Product CRUD, Order state machine, Kitchen board, Customer CRM) | `feature/admin-operations` | `0fdd3da` | 31/31 Spring Boot tests, Vite build | Pushed to origin | Completed |
 | Feature 6: Advanced Bakery Operations (Custom cake studio with dynamic canvas, Quotations, Raw ingredients inventory & ledger) | `feature/advanced-bakery-operations` | `e4076d7` | 33/33 Spring Boot tests, Vite build | Pushed to origin | Completed |
+| Feature 7: Customer Retention & VIP Club (Reviews with verified purchase, Loyalty tiers & points, Concierge FAQ Chatbot) | `feature/customer-retention` | `53f4086` | 37/37 Spring Boot tests, Vite build | Pushed to origin | Completed |
+| Feature 8: Reporting, Analytics & Production Readiness (CSV exports, SEO JSON-LD, Sitemap, E2E Journey suite & documentation) | `feature/production-readiness` | Pending | 38/38 Spring Boot tests, Vite build | Ready to push | Completed |

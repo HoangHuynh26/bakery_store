@@ -7,7 +7,8 @@ import {
   RefreshCw,
   TrendingUp,
   ArrowRight,
-  PackageCheck
+  PackageCheck,
+  Download
 } from 'lucide-react';
 import { 
   ResponsiveContainer, 
@@ -77,6 +78,26 @@ export const AdminDashboardPage = () => {
     }
   };
 
+  const handleExportOrders = async () => {
+    try {
+      addToast('Đang tạo báo cáo đơn hàng...', 'info');
+      await adminService.downloadOrdersCsv();
+      addToast('Xuất báo cáo đơn hàng thành công!', 'success');
+    } catch (err) {
+      addToast('Không thể xuất báo cáo lúc này', 'error');
+    }
+  };
+
+  const handleExportInventory = async () => {
+    try {
+      addToast('Đang tạo báo cáo tồn kho...', 'info');
+      await adminService.downloadInventoryCsv();
+      addToast('Xuất báo cáo tồn kho thành công!', 'success');
+    } catch (err) {
+      addToast('Không thể xuất báo cáo lúc này', 'error');
+    }
+  };
+
   const formatVND = (amount) => {
     return new Intl.NumberFormat('vi-VN', {
       style: 'currency',
@@ -120,14 +141,32 @@ export const AdminDashboardPage = () => {
             Giám sát doanh số trực tiếp, quy trình nướng bánh & điều phối giao hàng Maison Douce
           </p>
         </div>
-        <button 
-          onClick={handleRefresh} 
-          disabled={refreshing}
-          className="dashboard-refresh-btn"
-        >
-          <RefreshCw size={16} className={refreshing ? 'animate-spin' : ''} />
-          <span>Làm mới số liệu</span>
-        </button>
+        <div className="flex items-center gap-2 flex-wrap">
+          <button 
+            onClick={handleExportOrders} 
+            className="dashboard-refresh-btn"
+            title="Xuất danh sách đơn hàng sang file CSV"
+          >
+            <Download size={15} />
+            <span>Xuất Đơn (CSV)</span>
+          </button>
+          <button 
+            onClick={handleExportInventory} 
+            className="dashboard-refresh-btn"
+            title="Xuất tồn kho sản phẩm sang file CSV"
+          >
+            <Download size={15} />
+            <span>Xuất Kho (CSV)</span>
+          </button>
+          <button 
+            onClick={handleRefresh} 
+            disabled={refreshing}
+            className="dashboard-refresh-btn"
+          >
+            <RefreshCw size={15} className={refreshing ? 'animate-spin' : ''} />
+            <span>Làm mới</span>
+          </button>
+        </div>
       </div>
 
       {/* KPI Cards Grid */}

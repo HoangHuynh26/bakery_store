@@ -83,12 +83,24 @@ OpenAPI JSON Spec: `http://localhost:8080/v3/api-docs`
 - `GET  /api/v1/custom-cakes/my-requests` — Customer custom cake requests
 - `POST /api/v1/custom-cakes/{id}/accept-quotation` — Accept admin custom quotation
 
+### Customer Reviews & Retention (`/reviews`, `/loyalty`, `/support`)
+- `GET  /api/v1/reviews/products/{productId}` — Get verified product reviews and rating breakdown
+- `POST /api/v1/reviews` — Submit verified customer review (requires purchase verification)
+- `GET  /api/v1/loyalty/me` — Customer points balance, current tier, and transaction history
+- `GET  /api/v1/loyalty/tiers` — List all loyalty tiers and earning multipliers
+- `POST /api/v1/support/chat` — Boutique concierge FAQ chatbot and live order tracking inquiry
+- `POST /api/v1/support/tickets` — Submit formal customer inquiry ticket
+- `GET  /api/v1/support/tickets/my-tickets` — Customer support ticket history
+
 ### Operations & Admin (`/admin/*`)
 - `GET  /api/v1/admin/dashboard/summary` — High-level KPI metrics & alerts
+- `GET  /api/v1/admin/dashboard/export/orders.csv` — Export orders ledger to CSV (UTF-8 BOM for Excel)
+- `GET  /api/v1/admin/dashboard/export/inventory.csv` — Export inventory ledger to CSV (UTF-8 BOM for Excel)
 - `GET  /api/v1/admin/products` — Full product inventory management
 - `POST /api/v1/admin/products` — Create new product
 - `PUT  /api/v1/admin/products/{id}` — Update product & variants
 - `GET  /api/v1/admin/orders` — Orders management with status filters
 - `PUT  /api/v1/admin/orders/{id}/status` — Authorized order state transitions
 - `GET  /api/v1/admin/production/board` — Kitchen tablet preparation board
-- `GET  /api/v1/admin/analytics/revenue` — Revenue report and CSV export
+- `GET  /api/v1/admin/production/inventory` — Raw ingredient inventory tracking & stock adjustments
+- `GET  /api/v1/admin/analytics/revenue` — Revenue report and analytics

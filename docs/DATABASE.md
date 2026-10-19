@@ -56,3 +56,10 @@
 - Unique indexes on `users(email)`, `products(sku)`, `products(slug)`, `categories(slug)`, `coupons(code)`.
 - Foreign key indexes on all child tables (`order_id`, `product_id`, `user_id`, `cart_id`).
 - Compound index on `orders(user_id, created_at DESC)` and `orders(status, delivery_date)`.
+
+## 4. Flyway Versioned Migration Sequence
+- `V1__init_schema.sql`: Full DDL creation for identity, RBAC, catalog, carts, orders, delivery, payments, loyalty, coupons, reviews, and support.
+- `V2__seed_initial_data.sql`: Idempotent data seeding for 16 categories, 30+ artisanal products, initial variants, delivery zones, time slots, and default bootstrap accounts.
+- `V3__add_wishlists_table.sql`: Wishlist persistence tables and user foreign keys.
+- `V4__add_custom_cake_contact_and_seed_ingredients.sql`: Custom cake recipient contact fields and kitchen raw ingredients catalog (butter, cream, chocolate, flour, vanilla, yeast).
+- `V5__seed_loyalty_and_sample_reviews.sql`: Loyalty tier seed data (Bronze, Silver, Gold, Platinum) and authentic product review records with star ratings.

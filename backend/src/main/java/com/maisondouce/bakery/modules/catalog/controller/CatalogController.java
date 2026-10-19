@@ -40,7 +40,7 @@ public class CatalogController {
         return ResponseEntity.ok(ApiResponse.success(category));
     }
 
-    @GetMapping("/products")
+    @GetMapping({"/products", "/search"})
     @Operation(summary = "Filter, search, sort, and paginate bakery products")
     public ResponseEntity<PagedResponse<ProductSummaryDTO>> getProducts(
             @RequestParam(required = false) String category,

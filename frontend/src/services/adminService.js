@@ -99,4 +99,39 @@ export const adminService = {
     const res = await apiClient.get(`/admin/customers?${params.toString()}`);
     return res.data;
   },
+
+  // Export CSV
+  downloadOrdersCsv: async () => {
+    const token = localStorage.getItem('maison_access_token');
+    const res = await fetch('/api/v1/admin/dashboard/export/orders.csv', {
+      headers: {
+        Authorization: token ? `Bearer ${token}` : '',
+      },
+    });
+    const blob = await res.blob();
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `maison_douce_orders_${new Date().toISOString().slice(0, 10)}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  },
+
+  downloadInventoryCsv: async () => {
+    const token = localStorage.getItem('maison_access_token');
+    const res = await fetch('/api/v1/admin/dashboard/export/inventory.csv', {
+      headers: {
+        Authorization: token ? `Bearer ${token}` : '',
+      },
+    });
+    const blob = await res.blob();
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `maison_douce_inventory_${new Date().toISOString().slice(0, 10)}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  },
 };

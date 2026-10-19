@@ -26,13 +26,22 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
 public class AdminDashboardServiceImpl implements AdminDashboardService {
 
     private final OrderRepository orderRepository;
     private final ProductRepository productRepository;
     private final UserRepository userRepository;
     private final OrderService orderService;
+
+    public AdminDashboardServiceImpl(OrderRepository orderRepository,
+                                     ProductRepository productRepository,
+                                     UserRepository userRepository,
+                                     OrderService orderService) {
+        this.orderRepository = orderRepository;
+        this.productRepository = productRepository;
+        this.userRepository = userRepository;
+        this.orderService = orderService;
+    }
 
     private static final ZoneId VN_ZONE = ZoneId.of("Asia/Ho_Chi_Minh");
 
@@ -116,5 +125,56 @@ public class AdminDashboardServiceImpl implements AdminDashboardService {
             dto.setImageUrl(p.getMainImageUrl());
             return dto;
         }).collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public byte[] exportOrdersCsv() {
+        List<Order> orders = orderRepository.findAllByOrderByCreatedAtDesc(org.springframework.data.domain.Pageable.unpaged()).getContent();
+        StringBuilder csv = new StringBuilder();
+        // UTF-8 BOM for Excel
+        csv.append('\uFEFF');
+        csv.append("Mã đơn hàng,Người nhận,Số điện thoại,Địa chỉ,Ngày giao,Khung giờ,Phương thức thanh toán,Trạng thái đơn hàng,Tổng tiền (VND),Ngày tạo\n");
+
+        for (Order o : orders) {
+            csv.append(escapeCsv(o.getOrderNumber())).append(",")
+               .append(escapeCsv(o.getRecipientName())).append(",")
+               .append(escapeCsv(o.getRecipientPhone())).append(",")
+               .append(escapeCsv(o.getDeliveryAddress())).append(",")
+               .append(escapeCsv(o.getDeliveryDate() != null ? o.getDeliveryDate().toString() : "")).append(",")
+               .append(escapeCsv(o.getDeliveryTimeSlot() != null ? o.getDeliveryTimeSlot().getSlotName() : "")).append(",")
+               .append(escapeCsv(o.getPaymentMethod())).append(",")
+               .append(escapeCsv(o.getStatus())).append(",")
+               .append(o.getTotalAmount() != null ? o.getTotalAmount().toPlainString() : "0").append(",")
+               .append(escapeCsv(o.getCreatedAt() != null ? o.getCreatedAt().toString() : "")).append("\n");
+        }
+        return csv.toString().getBytes(java.nio.charset.StandardCharsets.UTF_8);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public byte[] exportInventoryCsv() {
+        List<Product> products = productRepository.findAll();
+        StringBuilder csv = new StringBuilder();
+        csv.append('\uFEFF');
+        csv.append("Mã SKU,Tên món bánh,Danh mục,Tồn kho hiện tại,Giá bán (VND),Trạng thái mở bán\n");
+
+        for (Product p : products) {
+            csv.append(escapeCsv(p.getSku())).append(",")
+               .append(escapeCsv(p.getNameVi())).append(",")
+               .append(escapeCsv(p.getCategory() != null ? p.getCategory().getNameVi() : "")).append(",")
+               .append(p.getStockQuantity()).append(",")
+               .append(p.getBasePrice() != null ? p.getBasePrice().toPlainString() : "0").append(",")
+               .append(p.isActive() ? "Đang mở bán" : "Tạm ngưng").append("\n");
+        }
+        return csv.toString().getBytes(java.nio.charset.StandardCharsets.UTF_8);
+    }
+
+    private String escapeCsv(String value) {
+        if (value == null) return "";
+        if (value.contains(",") || value.contains("\"") || value.contains("\n")) {
+            return "\"" + value.replace("\"", "\"\"") + "\"";
+        }
+        return value;
     }
 }

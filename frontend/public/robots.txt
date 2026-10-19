@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /staff/
+Disallow: /checkout/
+Disallow: /customer/
+
+Sitemap: https://maisondouce.vn/sitemap.xml

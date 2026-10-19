@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-ivory: #FFF9F2;
+  --color-espresso: #38261F;
+  --color-caramel: #C89963;
+  --color-caramel-dark: #A67945;
+  --color-blush: #F3D8D4;
+  --color-cream: #F7EBDD;
+  --color-sage: #A8B5A0;
+  --color-white: #FFFFFF;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color: var(--color-espresso);
+    background-color: var(--color-ivory);
+  }
+
+  body {
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Custom French Patisserie Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #FFF9F2;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #C89963;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #A67945;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-full bg-bakery-caramel text-white font-medium text-sm tracking-wide transition-all duration-300 shadow-sm hover:bg-bakery-caramel-dark hover:shadow-soft active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-full border border-bakery-espresso/20 text-bakery-espresso font-medium text-sm tracking-wide transition-all duration-300 hover:bg-bakery-cream hover:border-bakery-espresso/40 active:scale-[0.98] disabled:opacity-50;
+  }
+
+  .btn-outline-gold {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-full border border-bakery-caramel text-bakery-caramel font-medium text-sm tracking-wide transition-all duration-300 hover:bg-bakery-caramel hover:text-white active:scale-[0.98];
+  }
+
+  .badge-luxury {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase bg-bakery-caramel/15 text-bakery-caramel border border-bakery-caramel/30;
+  }
+
+  .card-luxury {
+    @apply bg-white rounded-luxury border border-bakery-espresso/5 shadow-soft hover:shadow-elevated transition-all duration-300 overflow-hidden;
+  }
+
+  .glass-panel {
+    @apply bg-white/80 backdrop-blur-md border border-white/60 shadow-soft;
+  }
+}

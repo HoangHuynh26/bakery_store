@@ -1,6 +1,41 @@
-node_modules/
-dist/
+# OS & IDE
 .DS_Store
-npm-debug.log*
-.vite/
-package-lock.json
+Thumbs.db
+.idea/
+.vscode/
+*.iml
+*.sublime-project
+*.sublime-workspace
+
+# Environment & Secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/.vite/
+frontend/*.local
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/pnpm-debug.log*
+
+# Backend
+backend/target/
+backend/*.jar
+backend/*.war
+backend/.flattened-pom.xml
+backend/mvnw
+backend/mvnw.cmd
+backend/.mvn/
+
+# Logs & Temp
+logs/
+*.log
+scratch/
+temp/

@@ -1,0 +1,32 @@
+.cart-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(56, 38, 31, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 50;
+  transition: opacity 0.3s ease;
+}
+
+.cart-drawer-content {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 440px;
+  background-color: #FFFFFF;
+  box-shadow: -8px 0 32px rgba(56, 38, 31, 0.15);
+  z-index: 51;
+  display: flex;
+  flex-direction: column;
+  animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}

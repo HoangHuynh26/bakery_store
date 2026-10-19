@@ -1,0 +1,45 @@
+.hero-banner {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  background: radial-gradient(circle at 70% 50%, rgba(200, 153, 99, 0.12) 0%, rgba(255, 249, 242, 1) 70%);
+}
+
+.category-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #FFFFFF;
+  box-shadow: 0 4px 20px -2px rgba(56, 38, 31, 0.06);
+  border: 1px solid rgba(56, 38, 31, 0.06);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px -4px rgba(56, 38, 31, 0.12);
+  border-color: rgba(200, 153, 99, 0.4);
+}
+
+.category-card:hover img {
+  transform: scale(1.05);
+}
+
+.category-card img {
+  transition: transform 0.5s ease;
+}
+
+.product-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid rgba(56, 38, 31, 0.06);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px -4px rgba(56, 38, 31, 0.12);
+  border-color: rgba(200, 153, 99, 0.4);
+}

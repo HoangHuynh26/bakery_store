@@ -1,0 +1,17 @@
+.footer-container {
+  background-color: #38261F;
+  color: #FFF9F2;
+  border-top: 1px solid rgba(200, 153, 99, 0.2);
+}
+
+.footer-link {
+  color: #F7EBDD;
+  font-size: 0.875rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+.footer-link:hover {
+  color: #C89963;
+  transform: translateX(2px);
+}

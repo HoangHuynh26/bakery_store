@@ -88,17 +88,20 @@ export const CartDrawer = () => {
                 className="flex items-start gap-3.5 p-3.5 rounded-xl border border-stone-100 hover:border-bakery-caramel/30 transition bg-white"
               >
                 <img
-                  src={item.image}
-                  alt={item.productName}
+                  src={item.imageUrl || item.image || '/images/placeholder-cake.jpg'}
+                  alt={item.nameVi || item.nameEn || item.productName || 'Bakery product'}
                   className="w-18 h-18 w-20 h-20 object-cover rounded-lg flex-shrink-0 bg-stone-100"
                 />
 
                 <div className="flex-1 min-w-0">
                   <h4 className="text-sm font-semibold text-bakery-espresso truncate">
-                    {item.productName}
+                    {item.nameVi || item.nameEn || item.productName}
                   </h4>
                   {item.variantName && (
                     <p className="text-xs text-stone-500 mt-0.5 truncate">{item.variantName}</p>
+                  )}
+                  {item.customizationNotes && (
+                    <p className="text-[11px] text-stone-400 italic truncate">"{item.customizationNotes}"</p>
                   )}
                   <p className="text-sm font-bold text-bakery-caramel mt-1">
                     {formatCurrency(item.unitPrice)}

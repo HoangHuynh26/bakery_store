@@ -63,6 +63,7 @@ public class SecurityConfig {
                                 "/api/v1/coupons/validate/**",
                                 "/api/v1/delivery/zones/**",
                                 "/api/v1/delivery/slots/**",
+                                "/api/v1/carts/**",
                                 "/api/v1/settings/**",
                                 "/actuator/health/**",
                                 "/actuator/info",

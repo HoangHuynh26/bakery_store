@@ -43,6 +43,19 @@ class ApiClient {
     this.failedQueue = [];
   }
 
+  getSessionToken() {
+    let token = localStorage.getItem('maison_session_token');
+    if (!token) {
+      token = 'session_' + Math.random().toString(36).substring(2) + Date.now().toString(36);
+      localStorage.setItem('maison_session_token', token);
+    }
+    return token;
+  }
+
+  clearSessionToken() {
+    localStorage.removeItem('maison_session_token');
+  }
+
   async request(endpoint, options = {}) {
     const url = endpoint.startsWith('http') ? endpoint : `${this.baseURL}${endpoint}`;
     
@@ -55,6 +68,11 @@ class ApiClient {
     const token = this.getAccessToken();
     if (token && !headers.Authorization) {
       headers.Authorization = `Bearer ${token}`;
+    }
+
+    const sessionToken = this.getSessionToken();
+    if (sessionToken && !headers['X-Session-Token']) {
+      headers['X-Session-Token'] = sessionToken;
     }
 
     const config = {

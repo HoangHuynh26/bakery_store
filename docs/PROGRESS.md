@@ -34,11 +34,11 @@
 - [x] **Feature 4.4**: Order Confirmation, Receipt Summary, Order Tracking Timeline & Customer Order History
 
 ### Phase 5 — Admin Operations
-- [ ] **Feature 5.1**: Admin RBAC & Authentication (SUPER_ADMIN, ADMIN, STAFF)
-- [ ] **Feature 5.2**: Operational Dashboard (Today's sales, pending orders, revenue, low stock alerts)
-- [ ] **Feature 5.3**: Product & Category Management (CRUD, Variants, Allergens, Image management)
-- [ ] **Feature 5.4**: Order Management & Audit Trail (Status updates, packing lists, kitchen tickets, staff assignment)
-- [ ] **Feature 5.5**: Customer & Delivery Zone Management
+- [x] **Feature 5.1**: Admin RBAC & Authentication (SUPER_ADMIN, ADMIN, STAFF)
+- [x] **Feature 5.2**: Operational Dashboard (Today's sales, pending orders, revenue, low stock alerts)
+- [x] **Feature 5.3**: Product & Category Management (CRUD, Variants, Allergens, Image management)
+- [x] **Feature 5.4**: Order Management & Audit Trail (Status updates, packing lists, kitchen tickets, staff assignment)
+- [x] **Feature 5.5**: Customer & Delivery Zone Management
 
 ### Phase 6 — Advanced Bakery Operations
 - [ ] **Feature 6.1**: Custom Celebration Cake Builder (Shape, size, flavor, filling, frosting, message, reference photo)
@@ -69,3 +69,4 @@
 | Feature 2: Storefront & Product Catalog (Browsing, Search, Filters, Detail) | `feature/catalog-storefront` | `d3f4726` | 11/11 Spring Boot tests, Vite build | Pushed to origin | Completed |
 | Feature 3: Identity & Shopping (Auth, Tokens, Address Book, Wishlist, Persistent Cart) | `feature/identity-and-cart` | `68790c9` | 24/24 Spring Boot tests, Vite build | Pushed to origin | Completed |
 | Feature 4: Checkout & Fulfillment (Multi-step checkout, VietQR, Delivery zones, Order tracking) | `feature/checkout-and-orders` | `60fcd15` | 28/28 Spring Boot tests, Vite build | Pushed to origin | Completed |
+| Feature 5: Admin Operations (Operational dashboard, Product CRUD, Order state machine, Kitchen board, Customer CRM) | `feature/admin-operations` | Pending | 31/31 Spring Boot tests, Vite build | Pushed to origin | Completed |

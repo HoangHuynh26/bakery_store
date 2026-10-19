@@ -105,4 +105,15 @@ public class Product extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "allergen_id")
     )
     private Set<Allergen> allergens = new HashSet<>();
+
+    public String getMainImageUrl() {
+        if (images != null && !images.isEmpty()) {
+            return images.stream()
+                    .filter(ProductImage::isThumbnail)
+                    .map(ProductImage::getImageUrl)
+                    .findFirst()
+                    .orElse(images.get(0).getImageUrl());
+        }
+        return null;
+    }
 }

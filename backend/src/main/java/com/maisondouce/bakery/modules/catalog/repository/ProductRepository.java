@@ -33,4 +33,15 @@ public interface ProductRepository extends JpaRepository<Product, UUID>, JpaSpec
     @Modifying
     @Query("UPDATE Product p SET p.viewCount = p.viewCount + 1 WHERE p.id = :id")
     void incrementViewCount(@Param("id") UUID id);
+
+    List<Product> findByStockQuantityLessThanEqualAndActiveTrue(int threshold);
+
+    long countByStockQuantityLessThanEqualAndActiveTrue(int threshold);
+
+    Page<Product> findByNameViContainingIgnoreCaseOrNameEnContainingIgnoreCaseOrSkuContainingIgnoreCase(
+            String nameVi, String nameEn, String sku, Pageable pageable);
+
+    Optional<Product> findBySku(String sku);
+
+    Optional<Product> findBySlug(String slug);
 }

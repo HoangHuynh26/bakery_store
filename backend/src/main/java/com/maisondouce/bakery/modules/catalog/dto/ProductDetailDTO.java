@@ -36,6 +36,7 @@ public class ProductDetailDTO {
     private String dietaryTags;
     private boolean featured;
     private boolean inStock;
+    private boolean active;
     private long viewCount;
 
     private CategoryDTO category;
@@ -65,6 +66,7 @@ public class ProductDetailDTO {
                 .dietaryTags(product.getDietaryTags())
                 .featured(product.isFeatured())
                 .inStock(product.getStockQuantity() > 0)
+                .active(product.isActive())
                 .viewCount(product.getViewCount())
                 .category(CategoryDTO.fromEntity(product.getCategory()))
                 .images(product.getImages() != null ? product.getImages().stream().map(ProductImageDTO::fromEntity).collect(Collectors.toList()) : Collections.emptyList())

@@ -30,6 +30,7 @@ public class ProductSummaryDTO {
     private int stockQuantity;
     private boolean featured;
     private boolean inStock;
+    private boolean active;
 
     public static ProductSummaryDTO fromEntity(Product product) {
         if (product == null) return null;
@@ -60,6 +61,7 @@ public class ProductSummaryDTO {
                 .stockQuantity(product.getStockQuantity())
                 .featured(product.isFeatured())
                 .inStock(product.getStockQuantity() > 0)
+                .active(product.isActive())
                 .build();
     }
 }

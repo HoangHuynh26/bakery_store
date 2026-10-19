@@ -31,14 +31,18 @@ import com.maisondouce.bakery.modules.promotion.service.PromotionService;
 import com.maisondouce.bakery.modules.user.entity.User;
 import com.maisondouce.bakery.modules.user.repository.UserRepository;
 import com.maisondouce.bakery.security.UserPrincipal;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import java.math.BigDecimal;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -301,6 +305,47 @@ public class OrderServiceImpl implements OrderService {
     @Transactional(readOnly = true)
     public List<OrderResponseDTO> getCustomerOrders(UUID userId) {
         return orderRepository.findByUserIdOrderByCreatedAtDesc(userId).stream()
+                .map(this::mapToOrderResponseDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public OrderResponseDTO getOrderById(UUID orderId) {
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new ResourceNotFoundException("Order", "id", orderId));
+        return mapToOrderResponseDTO(order);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<OrderResponseDTO> getAdminOrders(String status, String search, Pageable pageable) {
+        if (StringUtils.hasText(search)) {
+            return orderRepository.findByOrderNumberContainingIgnoreCaseOrRecipientPhoneContainingOrRecipientNameContainingIgnoreCaseOrderByCreatedAtDesc(
+                    search.trim(), search.trim(), search.trim(), pageable).map(this::mapToOrderResponseDTO);
+        }
+        if (StringUtils.hasText(status)) {
+            return orderRepository.findByStatusOrderByCreatedAtDesc(status.toUpperCase(), pageable)
+                    .map(this::mapToOrderResponseDTO);
+        }
+        return orderRepository.findAllByOrderByCreatedAtDesc(pageable).map(this::mapToOrderResponseDTO);
+    }
+
+    @Override
+    @Transactional
+    public OrderResponseDTO updateAdminNotes(UUID orderId, String adminNotes) {
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new ResourceNotFoundException("Order", "id", orderId));
+        order.setAdminNotes(adminNotes != null ? adminNotes.trim() : null);
+        Order saved = orderRepository.save(order);
+        return mapToOrderResponseDTO(saved);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<OrderResponseDTO> getKitchenOrdersForToday() {
+        LocalDate today = LocalDate.now(ZoneId.of("Asia/Ho_Chi_Minh"));
+        return orderRepository.findKitchenOrdersForDate(today).stream()
                 .map(this::mapToOrderResponseDTO)
                 .collect(Collectors.toList());
     }

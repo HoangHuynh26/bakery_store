@@ -14,6 +14,12 @@ import { RegisterPage } from '../pages/auth/RegisterPage';
 import { ProfilePage } from '../pages/customer/ProfilePage';
 import { WishlistPage } from '../pages/customer/WishlistPage';
 import CustomerOrdersPage from '../pages/customer/CustomerOrdersPage';
+import { AdminLayout } from '../components/admin/AdminLayout';
+import AdminDashboardPage from '../pages/admin/AdminDashboardPage';
+import AdminProductsPage from '../pages/admin/AdminProductsPage';
+import AdminOrdersPage from '../pages/admin/AdminOrdersPage';
+import KitchenBoardPage from '../pages/admin/KitchenBoardPage';
+import AdminCustomersPage from '../pages/admin/AdminCustomersPage';
 
 export const AppRoutes = () => {
   return (
@@ -46,6 +52,16 @@ export const AppRoutes = () => {
         <Route path="/custom-cake-builder" element={<CatalogPage />} />
         <Route path="/about" element={<HomePage />} />
         <Route path="/contact" element={<HomePage />} />
+      </Route>
+
+      {/* Admin Operations Layout */}
+      <Route path="/admin" element={<AdminLayout />}>
+        <Route index element={<Navigate to="/admin/dashboard" replace />} />
+        <Route path="dashboard" element={<AdminDashboardPage />} />
+        <Route path="products" element={<AdminProductsPage />} />
+        <Route path="orders" element={<AdminOrdersPage />} />
+        <Route path="kitchen" element={<KitchenBoardPage />} />
+        <Route path="customers" element={<AdminCustomersPage />} />
       </Route>
 
       {/* Fallback */}

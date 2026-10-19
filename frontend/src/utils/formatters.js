@@ -49,3 +49,8 @@ export const truncateText = (text, max = 100) => {
   if (!text || text.length <= max) return text || '';
   return `${text.substring(0, max)}...`;
 };
+
+// Aliases for convenient usage across modules
+export const formatVND = formatCurrency;
+export const formatDateTimeVN = formatDateTime;
+

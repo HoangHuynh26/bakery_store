@@ -87,6 +87,9 @@ export const Navbar = () => {
               <NavLink to="/about" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
                 Nghệ Nhân Maison
               </NavLink>
+              <NavLink to="/orders/track" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+                Tra Cứu Đơn
+              </NavLink>
               <NavLink to="/contact" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
                 Liên Hệ & Tiệm
               </NavLink>

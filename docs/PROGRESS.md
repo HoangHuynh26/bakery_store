@@ -68,3 +68,4 @@
 | Feature 1: Project Foundation & Architecture Setup | `feature/project-foundation` | `8ab61d0` | 4/4 Spring Boot tests, Vite build | Pushed to origin | Completed |
 | Feature 2: Storefront & Product Catalog (Browsing, Search, Filters, Detail) | `feature/catalog-storefront` | `d3f4726` | 11/11 Spring Boot tests, Vite build | Pushed to origin | Completed |
 | Feature 3: Identity & Shopping (Auth, Tokens, Address Book, Wishlist, Persistent Cart) | `feature/identity-and-cart` | `68790c9` | 24/24 Spring Boot tests, Vite build | Pushed to origin | Completed |
+| Feature 4: Checkout & Fulfillment (Multi-step checkout, VietQR, Delivery zones, Order tracking) | `feature/checkout-and-orders` | `60fcd15` | 28/28 Spring Boot tests, Vite build | Pushed to origin | Completed |

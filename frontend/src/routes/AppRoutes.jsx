@@ -5,6 +5,11 @@ import { HomePage } from '../pages/public/HomePage';
 import { CatalogPage } from '../pages/public/CatalogPage';
 import { ProductDetailPage } from '../pages/public/ProductDetailPage';
 import { SearchResultsPage } from '../pages/public/SearchResultsPage';
+import { CartPage } from '../pages/public/CartPage';
+import { LoginPage } from '../pages/auth/LoginPage';
+import { RegisterPage } from '../pages/auth/RegisterPage';
+import { ProfilePage } from '../pages/customer/ProfilePage';
+import { WishlistPage } from '../pages/customer/WishlistPage';
 
 export const AppRoutes = () => {
   return (
@@ -16,17 +21,21 @@ export const AppRoutes = () => {
         <Route path="/catalog/:categorySlug" element={<CatalogPage />} />
         <Route path="/product/:slug" element={<ProductDetailPage />} />
         <Route path="/search" element={<SearchResultsPage />} />
+        <Route path="/cart" element={<CartPage />} />
 
-        {/* Future phase routes */}
-        <Route path="/custom-cake-builder" element={<HomePage />} />
+        {/* Authentication & Customer Account */}
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/account/profile" element={<ProfilePage />} />
+        <Route path="/customer/profile" element={<ProfilePage />} />
+        <Route path="/account/wishlist" element={<WishlistPage />} />
+        <Route path="/wishlist" element={<WishlistPage />} />
+
+        {/* Informational pages */}
         <Route path="/seasonal" element={<CatalogPage />} />
+        <Route path="/custom-cake-builder" element={<CatalogPage />} />
         <Route path="/about" element={<HomePage />} />
         <Route path="/contact" element={<HomePage />} />
-        <Route path="/cart" element={<HomePage />} />
-        <Route path="/checkout" element={<HomePage />} />
-        <Route path="/login" element={<HomePage />} />
-        <Route path="/register" element={<HomePage />} />
-        <Route path="/wishlist" element={<HomePage />} />
       </Route>
 
       {/* Fallback */}

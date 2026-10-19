@@ -1,92 +1,124 @@
 import { create } from 'zustand';
-
-const CART_STORAGE_KEY = 'maison_cart_items';
-
-const getInitialCart = () => {
-  try {
-    const saved = localStorage.getItem(CART_STORAGE_KEY);
-    return saved ? JSON.parse(saved) : [];
-  } catch {
-    return [];
-  }
-};
+import { cartService } from '../services/cartService';
 
 export const useCartStore = create((set, get) => ({
-  items: getInitialCart(),
+  cart: {
+    id: null,
+    items: [],
+    totalItemCount: 0,
+    subtotal: 0,
+    estimatedDeliveryFee: 0,
+    estimatedTotal: 0,
+    freeDeliveryThreshold: 500000,
+    amountNeededForFreeDelivery: 500000,
+  },
+  items: [],
   isDrawerOpen: false,
+  isLoading: false,
 
   openDrawer: () => set({ isDrawerOpen: true }),
   closeDrawer: () => set({ isDrawerOpen: false }),
   toggleDrawer: () => set((state) => ({ isDrawerOpen: !state.isDrawerOpen })),
 
-  addItem: (product, variant = null, quantity = 1, customization = null) => {
-    const currentItems = get().items;
-    const unitPrice = variant
-      ? Number(product.basePrice) + Number(variant.priceAdjustment || 0)
-      : Number(product.promotionalPrice || product.basePrice);
+  fetchCart: async () => {
+    try {
+      set({ isLoading: true });
+      const cartData = await cartService.getCart();
+      set({
+        cart: cartData,
+        items: cartData.items || [],
+        isLoading: false,
+      });
+      return cartData;
+    } catch (err) {
+      set({ isLoading: false });
+      return null;
+    }
+  },
 
-    const existingIndex = currentItems.findIndex(
-      (item) =>
-        item.productId === product.id &&
-        item.variantId === (variant?.id || null) &&
-        JSON.stringify(item.customization) === JSON.stringify(customization)
-    );
+  addItem: async (product, variant = null, quantity = 1, customizationNotes = null) => {
+    try {
+      set({ isLoading: true });
+      const productId = product.id || product.productId;
+      const variantId = variant?.id || null;
 
-    let updatedItems;
-    if (existingIndex > -1) {
-      updatedItems = [...currentItems];
-      updatedItems[existingIndex].quantity += quantity;
-    } else {
-      const newItem = {
-        id: `${product.id}-${variant?.id || 'base'}-${Date.now()}`,
-        productId: product.id,
-        productName: product.nameVi || product.nameEn,
-        productNameEn: product.nameEn,
-        slug: product.slug,
-        image: product.thumbnailUrl || product.imageUrl || 'https://images.unsplash.com/photo-1578985545062-69928b1d9587',
-        variantId: variant?.id || null,
-        variantName: variant?.nameVi || variant?.nameEn || null,
-        unitPrice,
+      const updatedCart = await cartService.addItem(
+        productId,
+        variantId,
         quantity,
-        customization,
-      };
-      updatedItems = [...currentItems, newItem];
+        customizationNotes
+      );
+
+      set({
+        cart: updatedCart,
+        items: updatedCart.items || [],
+        isDrawerOpen: true,
+        isLoading: false,
+      });
+      return updatedCart;
+    } catch (err) {
+      set({ isLoading: false });
+      throw err;
     }
-
-    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(updatedItems));
-    set({ items: updatedItems, isDrawerOpen: true });
   },
 
-  updateQuantity: (itemId, newQuantity) => {
-    if (newQuantity <= 0) {
-      get().removeItem(itemId);
-      return;
+  updateQuantity: async (itemId, newQuantity, customizationNotes = null) => {
+    try {
+      let updatedCart;
+      if (newQuantity <= 0) {
+        updatedCart = await cartService.removeItem(itemId);
+      } else {
+        updatedCart = await cartService.updateItem(itemId, newQuantity, customizationNotes);
+      }
+
+      set({
+        cart: updatedCart,
+        items: updatedCart.items || [],
+      });
+      return updatedCart;
+    } catch (err) {
+      throw err;
     }
-
-    const updatedItems = get().items.map((item) =>
-      item.id === itemId ? { ...item, quantity: newQuantity } : item
-    );
-
-    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(updatedItems));
-    set({ items: updatedItems });
   },
 
-  removeItem: (itemId) => {
-    const updatedItems = get().items.filter((item) => item.id !== itemId);
-    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(updatedItems));
-    set({ items: updatedItems });
+  removeItem: async (itemId) => {
+    try {
+      const updatedCart = await cartService.removeItem(itemId);
+      set({
+        cart: updatedCart,
+        items: updatedCart.items || [],
+      });
+      return updatedCart;
+    } catch (err) {
+      throw err;
+    }
   },
 
-  clearCart: () => {
-    localStorage.removeItem(CART_STORAGE_KEY);
-    set({ items: [] });
+  clearCart: async () => {
+    try {
+      const emptyCart = await cartService.clearCart();
+      set({
+        cart: emptyCart,
+        items: [],
+      });
+    } catch (err) {
+      throw err;
+    }
   },
 
   getTotalItemCount: () => {
-    return get().items.reduce((sum, item) => sum + item.quantity, 0);
+    const cart = get().cart;
+    if (cart && typeof cart.totalItemCount === 'number') {
+      return cart.totalItemCount;
+    }
+    return get().items.reduce((sum, item) => sum + (item.quantity || 0), 0);
   },
 
   getSubtotal: () => {
-    return get().items.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
+    const cart = get().cart;
+    if (cart && cart.subtotal != null) {
+      return Number(cart.subtotal);
+    }
+    return get().items.reduce((sum, item) => sum + Number(item.unitPrice || 0) * (item.quantity || 0), 0);
   },
 }));

@@ -22,10 +22,10 @@
 - [x] **Feature 2.5**: Catalog Filters (Price range, Diet, Flavor, Availability) & Sorting
 
 ### Phase 3 — Identity & Shopping
-- [ ] **Feature 3.1**: Customer Registration, Login, JWT Access & Rotating Refresh Tokens
-- [ ] **Feature 3.2**: Customer Profile, Address Book & Notification Preferences
-- [ ] **Feature 3.3**: Customer Wishlist & Recently Viewed Products
-- [ ] **Feature 3.4**: Persistent Shopping Cart (Cart Drawer, Full Cart Page, Guest Cart Merging)
+- [x] **Feature 3.1**: Customer Registration, Login, JWT Access & Rotating Refresh Tokens
+- [x] **Feature 3.2**: Customer Profile, Address Book & Notification Preferences
+- [x] **Feature 3.3**: Customer Wishlist & Recently Viewed Products
+- [x] **Feature 3.4**: Persistent Shopping Cart (Cart Drawer, Full Cart Page, Guest Cart Merging)
 
 ### Phase 4 — Checkout & Fulfillment
 - [ ] **Feature 4.1**: Multi-Step Checkout Workflow (Customer info, Delivery/Pickup, Slot capacity, Payment selection)
@@ -66,4 +66,5 @@
 | Feature | Branch | Commit Hash | Automated Tests | Push Result | Status |
 |---------|--------|-------------|-----------------|-------------|--------|
 | Feature 1: Project Foundation & Architecture Setup | `feature/project-foundation` | `8ab61d0` | 4/4 Spring Boot tests, Vite build | Pushed to origin | Completed |
-| Feature 2: Storefront & Product Catalog (Browsing, Search, Filters, Detail) | `feature/catalog-storefront` | Pending | 11/11 Spring Boot tests, Vite build | Pending push | Completed |
+| Feature 2: Storefront & Product Catalog (Browsing, Search, Filters, Detail) | `feature/catalog-storefront` | `d3f4726` | 11/11 Spring Boot tests, Vite build | Pushed to origin | Completed |
+| Feature 3: Identity & Shopping (Auth, Tokens, Address Book, Wishlist, Persistent Cart) | `feature/identity-and-cart` | `68790c9` | 24/24 Spring Boot tests, Vite build | Pushed to origin | Completed |

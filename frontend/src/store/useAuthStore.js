@@ -1,5 +1,7 @@
 import { create } from 'zustand';
 import { apiClient } from '../services/apiClient';
+import { authService } from '../services/authService';
+import { cartService } from '../services/cartService';
 
 export const useAuthStore = create((set, get) => ({
   user: JSON.parse(localStorage.getItem('maison_user') || 'null'),
@@ -17,19 +19,69 @@ export const useAuthStore = create((set, get) => ({
     });
   },
 
-  logout: async () => {
+  login: async (email, password) => {
+    set({ isLoading: true });
     try {
-      const refreshToken = apiClient.getRefreshToken();
-      if (refreshToken) {
-        await apiClient.post('/auth/logout', { refreshToken }).catch(() => {});
+      const data = await authService.login(email, password);
+      get().setAuth(data.user, data.accessToken, data.refreshToken);
+
+      // Merge guest cart if guest session existed
+      const guestSessionToken = localStorage.getItem('maison_session_token');
+      if (guestSessionToken) {
+        try {
+          await cartService.mergeCart(guestSessionToken);
+          // Cart merged, clear guest session token
+          apiClient.clearSessionToken();
+        } catch {
+          // Ignore merge failure if guest cart was empty
+        }
       }
+
+      return data;
+    } finally {
+      set({ isLoading: false });
+    }
+  },
+
+  register: async (form) => {
+    set({ isLoading: true });
+    try {
+      const data = await authService.register(form);
+      get().setAuth(data.user, data.accessToken, data.refreshToken);
+      return data;
+    } finally {
+      set({ isLoading: false });
+    }
+  },
+
+  logout: async () => {
+    set({ isLoading: true });
+    try {
+      await authService.logout().catch(() => {});
     } finally {
       apiClient.clearTokens();
       set({
         user: null,
         accessToken: null,
         isAuthenticated: false,
+        isLoading: false,
       });
+    }
+  },
+
+  updateUser: (updatedUser) => {
+    localStorage.setItem('maison_user', JSON.stringify(updatedUser));
+    set({ user: updatedUser });
+  },
+
+  refreshUserProfile: async () => {
+    if (!get().isAuthenticated) return null;
+    try {
+      const profile = await authService.getProfile();
+      get().updateUser(profile);
+      return profile;
+    } catch {
+      return null;
     }
   },
 
@@ -48,7 +100,11 @@ export const useAuthStore = create((set, get) => ({
   isStaff: () => {
     const user = get().user;
     if (!user || !user.roles) return false;
-    return user.roles.includes('ROLE_STAFF') || user.roles.includes('ROLE_ADMIN') || user.roles.includes('ROLE_SUPER_ADMIN');
+    return (
+      user.roles.includes('ROLE_STAFF') ||
+      user.roles.includes('ROLE_ADMIN') ||
+      user.roles.includes('ROLE_SUPER_ADMIN')
+    );
   },
 }));
 

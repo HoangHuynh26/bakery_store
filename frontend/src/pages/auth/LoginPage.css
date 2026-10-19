@@ -1,0 +1,55 @@
+.login-page-container {
+  min-height: calc(100vh - 160px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  background-color: var(--color-warm-ivory, #FFF9F2);
+  background-image: radial-gradient(#C89963 0.75px, transparent 0.75px);
+  background-size: 24px 24px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 480px;
+  background: #ffffff;
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 40px -15px rgba(56, 38, 31, 0.08);
+  border: 1px solid rgba(200, 153, 99, 0.15);
+  padding: 2.5rem;
+}
+
+.login-input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid #e7e5e4;
+  background-color: #fafaf9;
+  font-size: 0.875rem;
+  color: #38261F;
+  transition: all 0.2s ease;
+}
+
+.login-input:focus {
+  outline: none;
+  border-color: #C89963;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(200, 153, 99, 0.15);
+}
+
+.demo-account-chip {
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px dashed #d6d3d1;
+  background: #fdfaf6;
+  font-size: 0.75rem;
+  color: #57534e;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.demo-account-chip:hover {
+  border-color: #C89963;
+  color: #38261F;
+  background: #f5ebe1;
+}

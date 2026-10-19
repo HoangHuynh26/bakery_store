@@ -28,10 +28,10 @@
 - [x] **Feature 3.4**: Persistent Shopping Cart (Cart Drawer, Full Cart Page, Guest Cart Merging)
 
 ### Phase 4 — Checkout & Fulfillment
-- [ ] **Feature 4.1**: Multi-Step Checkout Workflow (Customer info, Delivery/Pickup, Slot capacity, Payment selection)
-- [ ] **Feature 4.2**: Server-side Order Calculation & Payment Integration (COD, Store Pickup, Manual Bank Transfer with QR)
-- [ ] **Feature 4.3**: Stock Reservation, Concurrency Protection & Transactional Order State Machine
-- [ ] **Feature 4.4**: Order Confirmation, Receipt/Invoice Generation & Order Tracking Timeline
+- [x] **Feature 4.1**: Multi-Step Checkout Workflow (Customer info, Delivery/Pickup, Slot capacity, Payment selection)
+- [x] **Feature 4.2**: Server-side Order Calculation & Payment Integration (COD, Store Pickup, Manual Bank Transfer with VietQR)
+- [x] **Feature 4.3**: Stock Reservation, Concurrency Protection & Transactional Order State Machine
+- [x] **Feature 4.4**: Order Confirmation, Receipt Summary, Order Tracking Timeline & Customer Order History
 
 ### Phase 5 — Admin Operations
 - [ ] **Feature 5.1**: Admin RBAC & Authentication (SUPER_ADMIN, ADMIN, STAFF)
@@ -68,3 +68,4 @@
 | Feature 1: Project Foundation & Architecture Setup | `feature/project-foundation` | `8ab61d0` | 4/4 Spring Boot tests, Vite build | Pushed to origin | Completed |
 | Feature 2: Storefront & Product Catalog (Browsing, Search, Filters, Detail) | `feature/catalog-storefront` | `d3f4726` | 11/11 Spring Boot tests, Vite build | Pushed to origin | Completed |
 | Feature 3: Identity & Shopping (Auth, Tokens, Address Book, Wishlist, Persistent Cart) | `feature/identity-and-cart` | `68790c9` | 24/24 Spring Boot tests, Vite build | Pushed to origin | Completed |
+| Feature 4: Checkout & Fulfillment (Multi-step checkout, VietQR, Delivery zones, Order tracking) | `feature/checkout-and-orders` | `60fcd15` | 28/28 Spring Boot tests, Vite build | Pushed to origin | Completed |

@@ -60,10 +60,10 @@ public class SecurityConfig {
                                 "/api/v1/categories/**",
                                 "/api/v1/search/**",
                                 "/api/v1/system/**",
-                                "/api/v1/coupons/validate/**",
-                                "/api/v1/delivery/zones/**",
-                                "/api/v1/delivery/slots/**",
+                                "/api/v1/coupons/**",
+                                "/api/v1/delivery/**",
                                 "/api/v1/carts/**",
+                                "/api/v1/checkout/**",
                                 "/api/v1/settings/**",
                                 "/actuator/health/**",
                                 "/actuator/info",
@@ -71,6 +71,9 @@ public class SecurityConfig {
                                 "/swagger-ui.html",
                                 "/v3/api-docs/**"
                         ).permitAll()
+                        // Public GET for tracking orders by order number
+                        .requestMatchers(HttpMethod.GET, "/api/v1/orders/{orderNumber}").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/v1/orders/{orderNumber}/track").permitAll()
                         // Public GET for reviews and featured
                         .requestMatchers(HttpMethod.GET, "/api/v1/reviews/**").permitAll()
                         // Staff & Admin Endpoints

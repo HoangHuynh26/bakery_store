@@ -1,0 +1,432 @@
+/* Maison Douce Bakery - Checkout Page Styles */
+
+.checkout-page {
+  background-color: var(--color-warm-ivory, #FFF9F2);
+  min-height: calc(100vh - 180px);
+  padding: 40px 0 80px;
+}
+
+.checkout-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.checkout-header {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.checkout-title {
+  font-family: var(--font-serif, "Playfair Display", Georgia, serif);
+  font-size: 2.25rem;
+  color: var(--color-espresso, #38261F);
+  margin-bottom: 8px;
+}
+
+.checkout-subtitle {
+  color: #7A6258;
+  font-size: 0.95rem;
+}
+
+.checkout-grid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 36px;
+  align-items: start;
+}
+
+@media (max-width: 991px) {
+  .checkout-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Sections */
+.checkout-section {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(200, 153, 99, 0.18);
+  box-shadow: 0 4px 20px rgba(56, 38, 31, 0.04);
+}
+
+.checkout-section-title {
+  font-family: var(--font-serif, "Playfair Display", Georgia, serif);
+  font-size: 1.25rem;
+  color: var(--color-espresso, #38261F);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-caramel, #C89963);
+  color: #FFFFFF;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: var(--font-sans, "Outfit", sans-serif);
+}
+
+/* Form Styles */
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 600px) {
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-espresso, #38261F);
+  margin-bottom: 6px;
+}
+
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #E5D5C5;
+  border-radius: 10px;
+  background: #FCFAF8;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--color-espresso, #38261F);
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  outline: none;
+  border-color: var(--color-caramel, #C89963);
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(200, 153, 99, 0.15);
+}
+
+/* Fulfillment Selector */
+.fulfillment-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.fulfillment-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 16px;
+  border: 2px solid #EAE0D5;
+  border-radius: 12px;
+  background: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.fulfillment-btn:hover {
+  border-color: #D4B493;
+}
+
+.fulfillment-btn.active {
+  border-color: var(--color-caramel, #C89963);
+  background: #FFFBF7;
+  box-shadow: 0 4px 14px rgba(200, 153, 99, 0.12);
+}
+
+.fulfillment-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-espresso, #38261F);
+}
+
+.fulfillment-desc {
+  font-size: 0.8rem;
+  color: #8C786F;
+}
+
+/* Store Pickup Banner */
+.store-pickup-info {
+  background: #FAF6F0;
+  border-left: 4px solid var(--color-caramel, #C89963);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+}
+
+.store-pickup-title {
+  font-weight: 600;
+  color: var(--color-espresso, #38261F);
+  margin-bottom: 4px;
+}
+
+.store-pickup-address {
+  font-size: 0.875rem;
+  color: #6B554B;
+  line-height: 1.5;
+}
+
+/* Payment Selector */
+.payment-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.payment-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px;
+  border: 1.5px solid #EBE2D8;
+  border-radius: 12px;
+  background: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.payment-option:hover {
+  border-color: #D4B493;
+}
+
+.payment-option.active {
+  border-color: var(--color-caramel, #C89963);
+  background: #FFFDF9;
+  box-shadow: 0 4px 12px rgba(200, 153, 99, 0.1);
+}
+
+.payment-radio {
+  margin-top: 3px;
+  accent-color: var(--color-caramel, #C89963);
+  cursor: pointer;
+}
+
+.payment-text {
+  flex: 1;
+}
+
+.payment-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-espresso, #38261F);
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.payment-badge {
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  background: #EAF4E8;
+  color: #2F6F32;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.payment-desc {
+  font-size: 0.825rem;
+  color: #8C786F;
+}
+
+/* Order Summary Box */
+.summary-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 28px;
+  border: 1px solid rgba(200, 153, 99, 0.2);
+  box-shadow: 0 6px 24px rgba(56, 38, 31, 0.06);
+  position: sticky;
+  top: 96px;
+}
+
+.summary-title {
+  font-family: var(--font-serif, "Playfair Display", Georgia, serif);
+  font-size: 1.35rem;
+  color: var(--color-espresso, #38261F);
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #F0E6DC;
+}
+
+.summary-items-list {
+  max-height: 280px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  padding-right: 6px;
+}
+
+.summary-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.summary-item-img {
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #F8F3ED;
+}
+
+.summary-item-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.summary-item-name {
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: var(--color-espresso, #38261F);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.summary-item-meta {
+  font-size: 0.775rem;
+  color: #8C786F;
+}
+
+.summary-item-price {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-espresso, #38261F);
+  white-space: nowrap;
+}
+
+/* Coupon Input */
+.coupon-box {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.coupon-input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #E5D5C5;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+}
+
+.coupon-btn {
+  padding: 10px 16px;
+  background: #38261F;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.coupon-btn:hover {
+  background: #52382D;
+}
+
+.coupon-success {
+  background: #EAF7EC;
+  border: 1px solid #B5E2BC;
+  color: #206E2E;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.825rem;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.coupon-error {
+  color: #C0392B;
+  font-size: 0.825rem;
+  margin-top: 4px;
+}
+
+/* Totals */
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 0.925rem;
+  color: #6B554B;
+}
+
+.summary-line.discount {
+  color: #2F6F32;
+  font-weight: 500;
+}
+
+.summary-line.total {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-espresso, #38261F);
+  padding-top: 14px;
+  border-top: 1.5px dashed #E5D5C5;
+  margin-top: 12px;
+  margin-bottom: 24px;
+}
+
+.submit-order-btn {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #C89963 0%, #B28350 100%);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 4px 16px rgba(200, 153, 99, 0.3);
+}
+
+.submit-order-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #B98852 0%, #A37340 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(200, 153, 99, 0.38);
+}
+
+.submit-order-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.checkout-policy-notice {
+  margin-top: 16px;
+  font-size: 0.775rem;
+  color: #9C8980;
+  text-align: center;
+  line-height: 1.4;
+}

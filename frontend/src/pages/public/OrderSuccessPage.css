@@ -1,0 +1,275 @@
+/* Maison Douce Bakery - Order Success Page Styles */
+
+.order-success-page {
+  background-color: var(--color-warm-ivory, #FFF9F2);
+  min-height: calc(100vh - 180px);
+  padding: 50px 0 90px;
+}
+
+.order-success-container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.success-hero-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 40px;
+  border: 1px solid rgba(200, 153, 99, 0.22);
+  box-shadow: 0 10px 36px rgba(56, 38, 31, 0.07);
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.success-emblem {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: #F4EADA;
+  color: var(--color-caramel, #C89963);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 16px rgba(200, 153, 99, 0.2);
+}
+
+.success-title {
+  font-family: var(--font-serif, "Playfair Display", Georgia, serif);
+  font-size: 2.3rem;
+  color: var(--color-espresso, #38261F);
+  margin-bottom: 10px;
+}
+
+.success-subtitle {
+  color: #7A6258;
+  font-size: 1.05rem;
+  max-width: 580px;
+  margin: 0 auto 24px;
+  line-height: 1.5;
+}
+
+.order-number-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #FAF5EE;
+  border: 1.5px dashed var(--color-caramel, #C89963);
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--color-espresso, #38261F);
+  letter-spacing: 0.5px;
+}
+
+.copy-btn {
+  background: none;
+  border: none;
+  color: var(--color-caramel, #C89963);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  transition: color 0.2s;
+}
+
+.copy-btn:hover {
+  color: #9C6C38;
+}
+
+/* VietQR Bank Transfer Box */
+.vietqr-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 32px;
+  border: 2px solid #C89963;
+  margin-bottom: 28px;
+  box-shadow: 0 6px 28px rgba(200, 153, 99, 0.12);
+}
+
+.vietqr-title {
+  font-family: var(--font-serif, "Playfair Display", Georgia, serif);
+  font-size: 1.35rem;
+  color: var(--color-espresso, #38261F);
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.vietqr-desc {
+  text-align: center;
+  color: #7A6258;
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+}
+
+.vietqr-grid {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 28px;
+  align-items: center;
+}
+
+@media (max-width: 680px) {
+  .vietqr-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+.vietqr-img-wrapper {
+  background: #FFFBF7;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #EAE0D5;
+  display: flex;
+  justify-content: center;
+}
+
+.vietqr-img {
+  width: 100%;
+  max-width: 220px;
+  border-radius: 8px;
+}
+
+.bank-detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #F2E8DC;
+  font-size: 0.925rem;
+}
+
+.bank-label {
+  color: #8C786F;
+}
+
+.bank-value {
+  font-weight: 600;
+  color: var(--color-espresso, #38261F);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vietqr-footer-note {
+  margin-top: 18px;
+  font-size: 0.8rem;
+  color: #8C786F;
+  text-align: center;
+}
+
+/* Order Details Overview */
+.order-overview-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 32px;
+  border: 1px solid rgba(200, 153, 99, 0.18);
+  margin-bottom: 28px;
+}
+
+.overview-title {
+  font-family: var(--font-serif, "Playfair Display", Georgia, serif);
+  font-size: 1.25rem;
+  color: var(--color-espresso, #38261F);
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #F0E6DC;
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 600px) {
+  .overview-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.overview-item {
+  display: flex;
+  gap: 12px;
+}
+
+.overview-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: #FAF4EB;
+  color: var(--color-caramel, #C89963);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  shrink: 0;
+}
+
+.overview-meta-label {
+  font-size: 0.775rem;
+  color: #8C786F;
+  margin-bottom: 2px;
+}
+
+.overview-meta-val {
+  font-size: 0.925rem;
+  font-weight: 600;
+  color: var(--color-espresso, #38261F);
+}
+
+/* Action Buttons */
+.success-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+@media (max-width: 540px) {
+  .success-actions {
+    flex-direction: column;
+  }
+}
+
+.btn-primary-action {
+  padding: 14px 28px;
+  background: var(--color-caramel, #C89963);
+  color: #FFFFFF;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.975rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-primary-action:hover {
+  background: #B28350;
+  transform: translateY(-1px);
+}
+
+.btn-secondary-action {
+  padding: 14px 28px;
+  background: #FFFFFF;
+  color: var(--color-espresso, #38261F);
+  border: 1.5px solid #E5D5C5;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.975rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary-action:hover {
+  background: #F7EBDD;
+  border-color: #D4B493;
+}

@@ -69,4 +69,4 @@
 | Feature 2: Storefront & Product Catalog (Browsing, Search, Filters, Detail) | `feature/catalog-storefront` | `d3f4726` | 11/11 Spring Boot tests, Vite build | Pushed to origin | Completed |
 | Feature 3: Identity & Shopping (Auth, Tokens, Address Book, Wishlist, Persistent Cart) | `feature/identity-and-cart` | `68790c9` | 24/24 Spring Boot tests, Vite build | Pushed to origin | Completed |
 | Feature 4: Checkout & Fulfillment (Multi-step checkout, VietQR, Delivery zones, Order tracking) | `feature/checkout-and-orders` | `60fcd15` | 28/28 Spring Boot tests, Vite build | Pushed to origin | Completed |
-| Feature 5: Admin Operations (Operational dashboard, Product CRUD, Order state machine, Kitchen board, Customer CRM) | `feature/admin-operations` | Pending | 31/31 Spring Boot tests, Vite build | Pushed to origin | Completed |
+| Feature 5: Admin Operations (Operational dashboard, Product CRUD, Order state machine, Kitchen board, Customer CRM) | `feature/admin-operations` | `0fdd3da` | 31/31 Spring Boot tests, Vite build | Pushed to origin | Completed |
